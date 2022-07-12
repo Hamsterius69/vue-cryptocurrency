@@ -1,10 +1,17 @@
 /* eslint-disable import/no-unresolved */
 import axios from 'axios';
 
-const baseCryptocurrencies = 'https://api.coinstats.app/public/v1/coins?skip=0&limit=10&currency=EUR';
+const baseCryptocurrencies = 'https://api.coinstats.app/public/v1/coins';
 
 export default {
-  getCryptocurrencies(params) {
-    return axios.get(baseCryptocurrencies, params);
+  getCryptocurrencies(currencySelected) {
+    const arg = {
+      currency: currencySelected,
+      skip: 0,
+      limit: 100,
+    };
+    return axios.get(baseCryptocurrencies, {
+      params: { arg },
+    });
   },
 };

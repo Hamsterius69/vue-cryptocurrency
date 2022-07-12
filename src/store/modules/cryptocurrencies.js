@@ -2,11 +2,14 @@ import api from '@/api/coins';
 
 // actions
 const actions = {
-  callCryptocurrencies() {
-    return api.getCryptocurrencies();
+  callCryptocurrencies(_, currencySelected) {
+    return api.getCryptocurrencies(currencySelected);
   },
   setCryptocurrencies({ commit }, cryptocurrencies) {
     commit('setCryptocurrencies', cryptocurrencies);
+  },
+  setcryptocurrencyDetail({ commit }, cryptocurrencyDetail) {
+    commit('setcryptocurrencyDetail', cryptocurrencyDetail);
   },
 };
 
@@ -15,11 +18,15 @@ const mutations = {
   setCryptocurrencies(state, cryptocurrencies) {
     state.cryptocurrenciesList = cryptocurrencies;
   },
+  setcryptocurrencyDetail(state, cryptocurrencyDetail) {
+    state.cryptocurrencyDetail = cryptocurrencyDetail;
+  },
 };
 
 // initial state
 const state = {
   cryptocurrenciesList: [],
+  cryptocurrencyDetail: {},
 };
 
 export default {
