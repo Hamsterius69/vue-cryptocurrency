@@ -99,8 +99,8 @@ export default {
       this.loadTableData();
     },
     loadTableData() {
+      this.isDisable = true;
       this.$store.dispatch('callCryptocurrencies', this.currency.selected).then((response) => {
-        this.isDisable = true;
         if (response.data) {
           this.$store.dispatch('setCryptocurrencies', response.data.coins);
         }
