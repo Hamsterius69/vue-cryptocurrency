@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/extensions
 import api from '@/api/coins';
 
 // actions
@@ -5,11 +6,14 @@ const actions = {
   callCryptocurrencies(_, currencySelected) {
     return api.getCryptocurrencies(currencySelected);
   },
+  fetchCoinById(_, coinId) {
+    return api.getCoinById(coinId);
+  },
   setCryptocurrencies({ commit }, cryptocurrencies) {
     commit('setCryptocurrencies', cryptocurrencies);
   },
-  setcryptocurrencyDetail({ commit }, cryptocurrencyDetail) {
-    commit('setcryptocurrencyDetail', cryptocurrencyDetail);
+  setCryptocurrencyDetail({ commit }, cryptocurrencyDetail) {
+    commit('setCryptocurrencyDetail', cryptocurrencyDetail);
   },
 };
 
@@ -18,7 +22,7 @@ const mutations = {
   setCryptocurrencies(state, cryptocurrencies) {
     state.cryptocurrenciesList = cryptocurrencies;
   },
-  setcryptocurrencyDetail(state, cryptocurrencyDetail) {
+  setCryptocurrencyDetail(state, cryptocurrencyDetail) {
     state.cryptocurrencyDetail = cryptocurrencyDetail;
   },
 };
