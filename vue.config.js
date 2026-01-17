@@ -1,6 +1,9 @@
 module.exports = {
-  publicPath: './',
+  publicPath: '/',
   transpileDependencies: [
     'vuetify',
   ],
+  devServer: {
+    historyApiFallback: true,
+  },
 };
