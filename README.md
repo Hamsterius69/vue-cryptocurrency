@@ -80,6 +80,20 @@ src/
 
 This application uses the [CoinStats OpenAPI](https://coinstats.app/api-docs/) for cryptocurrency data.
 
+## Deploy to Cloudflare Pages
+
+1. Push your code to GitHub/GitLab
+2. Go to [Cloudflare Pages](https://pages.cloudflare.com/)
+3. Create a new project and connect your repository
+4. Configure build settings:
+   - **Build command:** `yarn build`
+   - **Build output directory:** `dist`
+5. Add environment variable:
+   - `VUE_APP_COINSTATS_API_KEY` = your API key
+6. Deploy
+
+The project includes `_redirects` and `_headers` files for SPA routing and security headers.
+
 ## Version History
 
 - **v1.2.0** - API migration, dark theme, enhanced detail view, data persistence
