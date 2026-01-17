@@ -1,17 +1,27 @@
-/* eslint-disable import/no-unresolved */
 import axios from 'axios';
 
-const baseCryptocurrencies = 'https://api.coinstats.app/public/v1/coins';
+const API_BASE_URL = 'https://openapiv1.coinstats.app';
+const API_KEY = process.env.VUE_APP_COINSTATS_API_KEY;
+
+const apiClient = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    'X-API-KEY': API_KEY,
+  },
+});
 
 export default {
   getCryptocurrencies(currencySelected) {
-    const arg = {
-      currency: currencySelected,
-      skip: 0,
-      limit: 100,
-    };
-    return axios.get(baseCryptocurrencies, {
-      params: { arg },
+    return apiClient.get('/coins', {
+      params: {
+        currency: currencySelected,
+        page: 1,
+        limit: 100,
+        includeRiskScore: 'true',
+      },
     });
+  },
+  getCoinById(coinId) {
+    return apiClient.get(`/coins/${coinId}`);
   },
 };
